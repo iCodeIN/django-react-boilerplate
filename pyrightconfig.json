@@ -1,0 +1,14 @@
+{
+  "reportMissingImports": true,
+  "reportMissingTypeStubs": false,
+  "reportUnknownMemberType": false,
+
+  "reportMissingTypeArgument": false,
+  "reportUnknownParameterType": false,
+  "reportUnknownArgumentType": false,
+  "reportGeneralTypeIssues": false,
+  "reportUnknownVariableType": false,
+
+  "pythonVersion": "3.9",
+  "pythonPlatform": "Darwin"
+}
