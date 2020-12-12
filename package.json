@@ -2,7 +2,10 @@
   "name": "second-try",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "",
+  "engines": {
+    "node": ">=12"
+  },
   "scripts": {
     "build": "cd client && npm install && npm run build"
   },
@@ -10,8 +13,8 @@
     "type": "git",
     "url": "git+https://github.com/e1r0nd/second-try.git"
   },
-  "author": "",
-  "license": "ISC",
+  "author": "Anatol Merezhanyi @e1r0nd_crg",
+  "license": "Apache-2.0",
   "bugs": {
     "url": "https://github.com/e1r0nd/second-try/issues"
   },
