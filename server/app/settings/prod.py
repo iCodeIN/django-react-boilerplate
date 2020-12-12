@@ -1,6 +1,6 @@
-from .base import *
+from .base import *  # NOSONAR
 
-DEBUG = False
+DEBUG = True
 
 # DATABASES
 DATABASES = {
@@ -16,11 +16,10 @@ DATABASES = {
 }
 
 
-MIDDLEWARE += [
-    "whitenoise.middleware.WhiteNoiseMiddleware",
-]
-
-STATICFILES_STORAGE = "whitenoise.storage.CompressedManifestStaticFilesStorage"
+# MIDDLEWARE += [
+#     "whitenoise.middleware.WhiteNoiseMiddleware",
+# ]
+# STATICFILES_STORAGE = "whitenoise.storage.CompressedManifestStaticFilesStorage"
 
 import django_on_heroku
 
