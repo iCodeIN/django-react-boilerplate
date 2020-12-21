@@ -1,4 +1,12 @@
 {
+  "python.formatting.provider": "black",
+  "[javascript]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[javascriptreact]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "python.pythonPath": "/Users/e1r0nd/projects/second-try/venv/bin/python3.9",
   "cSpell.words": [
     "Adminer",
     "Postgres",
@@ -9,15 +17,9 @@
     "djangorestframework",
     "dotenv",
     "getenv",
+    "gunicorn",
     "reduxjs",
-    "simplejwt"
-  ],
-  "python.formatting.provider": "black",
-  "[javascript]": {
-    "editor.defaultFormatter": "esbenp.prettier-vscode"
-  },
-  "[javascriptreact]": {
-    "editor.defaultFormatter": "esbenp.prettier-vscode"
-  },
-  "python.pythonPath": "/Users/e1r0nd/projects/second-try/venv/bin/python3.9"
+    "simplejwt",
+    "wsgi"
+  ]
 }

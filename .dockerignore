@@ -1,0 +1,17 @@
+# JS stuff
+node_modules
+.eslintcache
+
+# Python stuff
+venv
+runtime.txt
+setup.cfg
+
+# Dev stuff
+.git
+.gitignore
+LICENSE
+README.md
+.vscode
+.editorconfig
+db.sqlite3
