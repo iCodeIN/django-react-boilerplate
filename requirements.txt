@@ -1,1 +1,3 @@
--r requirements/requirements-heroku.txt
+-r server/requirements/requirements-prod.txt
+
+django-on-heroku>=1.1.2,<2

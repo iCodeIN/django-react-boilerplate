@@ -19,6 +19,7 @@
     "getenv",
     "gunicorn",
     "reduxjs",
+    "runserver",
     "simplejwt",
     "wsgi"
   ]

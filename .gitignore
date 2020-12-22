@@ -13,6 +13,8 @@ yarn-error.log*
 # misc
 .DS_Store
 
+.eslintcache
+
 /media
 /static
 /staticfiles
