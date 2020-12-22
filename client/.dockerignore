@@ -1,0 +1,11 @@
+# JS stuff
+build
+node_modules
+.eslintcache
+
+# Dev stuff
+.env
+.vscode
+.devcontainer
+.editorconfig
+README.md

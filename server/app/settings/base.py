@@ -1,20 +1,16 @@
 import os
 from pathlib import Path
-from dotenv import load_dotenv
 
 ROOT_DIR = Path(__file__).resolve(strict=True).parent.parent.parent.parent  # /
 SERVER_DIR = ROOT_DIR / "server"  # /server/
 BASE_DIR = SERVER_DIR / "app"  # /server/app/
 CLIENT_DIR = ROOT_DIR / "client"  # /client/
 
-load_dotenv()
-
-
 # GENERAL
 SECRET_KEY = os.getenv("SECRET_KEY")  # Should CRASH if it's empty!
 
 # Application definition
-INSTALLED_APPS = [
+django_apps = [
     "django.contrib.admin",
     "django.contrib.auth",
     "django.contrib.contenttypes",
@@ -22,6 +18,9 @@ INSTALLED_APPS = [
     "django.contrib.messages",
     "django.contrib.staticfiles",
 ]
+custom_apps = [
+    "core"]
+INSTALLED_APPS = django_apps + custom_apps
 
 MIDDLEWARE = [
     "django.middleware.security.SecurityMiddleware",
@@ -36,6 +35,19 @@ MIDDLEWARE = [
 ROOT_URLCONF = "server.app.urls"
 
 WSGI_APPLICATION = "server.app.wsgi.application"
+
+# DATABASES
+DATABASES = {
+    "default": {
+        "ENGINE": "django.db.backends.postgresql",
+        "HOST": os.getenv("DB_HOST"),  # Should CRASH if it's empty!
+        "NAME": os.getenv("DB_NAME"),
+        "USER": os.getenv("DB_USER"),
+        "PASSWORD": os.getenv("DB_PASSWORD"),
+        "ATOMIC_REQUESTS": True,
+        "CONN_MAX_AGE": int(os.getenv("CONN_MAX_AGE", default=60)),
+    }
+}
 
 # Password validation
 # https://docs.djangoproject.com/en/3.0/ref/settings/#auth-password-validators

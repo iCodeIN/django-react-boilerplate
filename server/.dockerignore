@@ -1,0 +1,11 @@
+# Python stuff
+__pycache__
+venv
+setup.cfg
+db.sqlite3
+
+# Dev stuff
+.env
+.devcontainer
+.vscode
+.editorconfig

@@ -1,22 +1,30 @@
 version: "3.2"
+
 services:
   backend:
-    build: ./backend
+    build: ./server
     volumes:
-      - ./backend:/app/backend
+      - ./server:/server
     ports:
       - "8000:8000"
-    stdin_open: true
-    tty: true
+    command: >
+      sh -c "python3 manage.py wait_for_db &&
+             python3 manage.py runserver 0.0.0.0:8000"
     environment:
-      - DJANGO_SETTINGS_MODULE=hello_world.settings.development
-    command: python3 manage.py runserver 0.0.0.0:8000
+      - SECRET_KEY=iamyourfatherluke
+      - DB_HOST=db
+      - DB_NAME=postgres
+      - DB_USER=postgres
+      - DB_PASSWORD=password
+    depends_on:
+      - db
+
   frontend:
-    build: ./frontend
+    build: ./client
     volumes:
-      - ./frontend:/app
+      - ./client:/client
       # One-way volume to use node_modules from inside image
-      - /app/node_modules
+      - /client/node_modules
     ports:
       - "3000:3000"
     environment:
@@ -24,3 +32,21 @@ services:
     depends_on:
       - backend
     command: npm start
+
+  db:
+    image: postgres:12-alpine
+    ports:
+      - "5432:5432"
+    restart: always
+    environment:
+      - POSTGRES_DB=postgres
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=password
+
+  adminer:
+    image: adminer
+    restart: always
+    depends_on:
+      - db
+    ports:
+      - "9000:8080"

@@ -3,11 +3,13 @@ node_modules
 .eslintcache
 
 # Python stuff
+__pycache__
 venv
 runtime.txt
 setup.cfg
 
 # Dev stuff
+.env
 .git
 .gitignore
 LICENSE

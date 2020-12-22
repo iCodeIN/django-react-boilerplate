@@ -2,19 +2,14 @@
 FROM python:3.9
 
 # Python envs
-ENV PYTHONFAULTHANDLER=1 \
-    PYTHONUNBUFFERED=1 \
-    PYTHONHASHSEED=random \
-    PIP_NO_CACHE_DIR=off \
-    PIP_DISABLE_PIP_VERSION_CHECK=on \
-    PIP_DEFAULT_TIMEOUT=100
+ENV PYTHONUNBUFFERED=1
 
 # Adding backend directory to make absolute filepaths consistent across services
-WORKDIR /app/backend
+WORKDIR /server
 
-# Install Python dependencies
-COPY ../requirements/requirements-base.txt ../requirements/requirements-dev.txt ./requirements/
-RUN pip3 install --no-cache-dir --upgrade pip -r requirements/requirements-dev.txt
+# Install Python dependencies for DEV environment
+COPY ./requirements/ ./
+RUN pip3 install --no-cache-dir --upgrade pip -r ./requirements-dev.txt
 
 # Add the rest of the code
 COPY . .
