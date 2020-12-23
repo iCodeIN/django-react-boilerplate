@@ -18,9 +18,10 @@ django_apps = [
     "django.contrib.messages",
     "django.contrib.staticfiles",
 ]
-custom_apps = [
-    "core"]
-INSTALLED_APPS = django_apps + custom_apps
+extra_app = []
+custom_apps = ["core"]
+
+INSTALLED_APPS = django_apps + extra_app + custom_apps
 
 MIDDLEWARE = [
     "django.middleware.security.SecurityMiddleware",
