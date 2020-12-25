@@ -19,7 +19,7 @@ django_apps = [
     "django.contrib.staticfiles",
 ]
 extra_app = []
-custom_apps = ["core"]
+custom_apps = ["server.core"]
 
 INSTALLED_APPS = django_apps + extra_app + custom_apps
 
