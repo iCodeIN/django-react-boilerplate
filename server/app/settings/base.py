@@ -19,7 +19,10 @@ django_apps = [
     "django.contrib.staticfiles",
 ]
 extra_app = []
-custom_apps = ["server.core"]
+custom_apps = [
+    "server.core",
+    "server.users",
+]
 
 INSTALLED_APPS = django_apps + extra_app + custom_apps
 
@@ -49,6 +52,9 @@ DATABASES = {
         "CONN_MAX_AGE": int(os.getenv("CONN_MAX_AGE", default=60)),
     }
 }
+
+# Custom User model
+AUTH_USER_MODEL = "core.User"
 
 # Password validation
 # https://docs.djangoproject.com/en/3.0/ref/settings/#auth-password-validators
