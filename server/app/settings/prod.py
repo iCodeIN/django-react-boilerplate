@@ -1,3 +1,3 @@
 from .base import *  # NOSONAR
 
-DEBUG = False
+DEBUG = True
