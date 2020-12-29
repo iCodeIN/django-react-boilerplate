@@ -2,7 +2,7 @@
 FROM node:14-alpine AS client
 WORKDIR /client
 COPY /client .
-RUN npm install && npm build
+RUN npm install && npm run-script build
 
 # Start server based on the frontend build
 FROM python:3.9-slim AS server
