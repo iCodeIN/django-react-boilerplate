@@ -16,23 +16,28 @@ ENV PYTHONFAULTHANDLER=1 \
 WORKDIR /server
 
 # Install Python dependencies for PROD environment
-COPY /server/requirements/ .
-RUN pip3 install --no-cache-dir --upgrade pip -r ./requirements-prod.txt
+# COPY /server/requirements/ .
+# RUN pip3 install --no-cache-dir --upgrade pip -r ./requirements-prod.txt
 
-# Add the rest of the code
-COPY /server .
+# # Add the rest of the code
+# COPY /server .
+WORKDIR /server
+COPY /server ./
+RUN pip3 install -r ./requirements/requirements-prod.txt
 
 # Install JS dependencies
 WORKDIR /client
 
-COPY /client/package*.json .
-RUN npm install
+# COPY /client/package*.json ./
+# RUN npm install
 
-# Add the rest of the code
-COPY /client .
+# # Add the rest of the code
+# COPY /client .
 
 # Build static files
-RUN npm build
+# RUN npm build
+COPY /client .
+RUN npm install && npm build
 
 # Have to move all static files other than index.html to root/
 # for whitenoise middleware
