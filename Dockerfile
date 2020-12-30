@@ -24,7 +24,7 @@ WORKDIR /
 # SECRET_KEY is only included here to avoid raising an error when generating static files.
 RUN SECRET_KEY=supersecret \
     python3 /server/manage.py collectstatic --noinput && \
-    python3 /server/manage.py migrate
+    SECRET_KEY=supersecret python3 /server/manage.py migrate
 
 EXPOSE $PORT
 
