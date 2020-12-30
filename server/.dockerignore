@@ -5,6 +5,7 @@ setup.cfg
 db.sqlite3
 
 # Dev stuff
+Dockerfile
 .env
 .devcontainer
 .vscode

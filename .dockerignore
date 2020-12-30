@@ -9,6 +9,7 @@ runtime.txt
 setup.cfg
 
 # Dev stuff
+Dockerfile
 .env
 .git
 .gitignore

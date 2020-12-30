@@ -4,6 +4,7 @@ node_modules
 .eslintcache
 
 # Dev stuff
+Dockerfile
 .env
 .vscode
 .devcontainer
