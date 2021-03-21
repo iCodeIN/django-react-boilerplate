@@ -1,5 +1,8 @@
+*.pem
+
 # JS stuff
 node_modules
+build
 .eslintcache
 
 # Python stuff
@@ -15,6 +18,7 @@ Dockerfile
 .gitignore
 LICENSE
 README.md
+.devcontainer
 .vscode
 .editorconfig
 db.sqlite3

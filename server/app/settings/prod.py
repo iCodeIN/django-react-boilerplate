@@ -1,6 +1,8 @@
 from .base import *  # NOSONAR
+from distutils.util import strtobool
 
-DEBUG = False
+debug = os.getenv("DEBUG")
+DEBUG = bool(strtobool(debug)) or False
 
 ALLOWED_HOSTS = []
 allowed_hosts = os.getenv("ALLOWED_HOSTS") or ""

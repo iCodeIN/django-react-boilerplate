@@ -20,6 +20,7 @@
     "reduxjs",
     "runserver",
     "simplejwt",
+    "strtobool",
     "wsgi"
   ]
 }
