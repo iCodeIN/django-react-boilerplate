@@ -9,6 +9,12 @@ CLIENT_DIR = ROOT_DIR / "client"  # /client/
 # GENERAL
 SECRET_KEY = os.getenv("SECRET_KEY")  # Should CRASH if it's empty!
 
+# Security
+CSRF_COOKIE_SAMESITE = "Strict"
+SESSION_COOKIE_SAMESITE = "Strict"
+CSRF_COOKIE_HTTPONLY = True
+SESSION_COOKIE_HTTPONLY = True
+
 # Application definition
 django_apps = [
     "django.contrib.admin",
@@ -18,7 +24,9 @@ django_apps = [
     "django.contrib.messages",
     "django.contrib.staticfiles",
 ]
-extra_app = []
+extra_app = [
+    "rest_framework",
+]
 custom_apps = [
     "server.core",
     "server.users",
@@ -55,6 +63,16 @@ DATABASES = {
 
 # Custom User model
 AUTH_USER_MODEL = "core.User"
+
+# Django REST framework
+REST_FRAMEWORK = {
+    'DEFAULT_RENDERER_CLASSES': [
+        'rest_framework.renderers.JSONRenderer',
+    ],
+    'DEFAULT_AUTHENTICATION_CLASSES': [
+        'rest_framework.authentication.SessionAuthentication',
+    ],
+}
 
 # Password validation
 # https://docs.djangoproject.com/en/3.0/ref/settings/#auth-password-validators

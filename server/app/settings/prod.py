@@ -8,3 +8,7 @@ ALLOWED_HOSTS = []
 allowed_hosts = os.getenv("ALLOWED_HOSTS") or ""
 for host in allowed_hosts.split(","):
     ALLOWED_HOSTS.append(host)
+
+# Security
+CSRF_COOKIE_SECURE = True
+SESSION_COOKIE_SECURE = True
