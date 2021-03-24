@@ -39,12 +39,15 @@ class UserSerializer(serializers.ModelSerializer):
         fields = (
             "username",
             "email",
+            "first_name",
+            "last_name",
             "password",
         )
         extra_kwargs = {
             "email": {"required": True},
             "password": {"required": True, "write_only": True, "min_length": 9},
         }
+        read_only_fields = ("date_created", "date_modified", "username")
 
     def create(self, validated_data):
         """Create a new user with encrypted password and return it"""
@@ -59,11 +62,18 @@ class UserSerializer(serializers.ModelSerializer):
 
     def update(self, instance, validated_data):
         """Update a user, setting the password correctly and return it"""
+        first_name = validated_data.pop("first_name", instance.first_name)
+        last_name = validated_data.pop("last_name", instance.last_name)
+        email = validated_data.pop("email", instance.email)
         password = validated_data.pop("password", None)
         user = super().update(instance, validated_data)
 
+        user.first_name = first_name
+        user.last_name = last_name
+        user.email = email
         if password:
             user.set_password(password)
-            user.save()
+        
+        user.save()
 
         return user

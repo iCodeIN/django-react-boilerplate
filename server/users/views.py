@@ -5,8 +5,13 @@ from django.contrib.auth import login, logout
 from django.http import JsonResponse
 from django.middleware.csrf import get_token
 from django.utils.translation import ugettext_lazy as _
-from rest_framework import views, generics, authentication, permissions
-from rest_framework.views import APIView
+from rest_framework import (
+    views,
+    generics,
+    authentication,
+    permissions,
+    status,
+)
 from server.users.serializers import UserSerializer, LoginSerializer
 
 
@@ -24,7 +29,7 @@ class RegisterUserView(generics.CreateAPIView):
 
 
 class LoginUserView(views.APIView):
-    """Create a new auth token for user"""
+    """Authenticate a user"""
 
     serializer_class = LoginSerializer
     authentication_classes = (authentication.SessionAuthentication,)
@@ -37,14 +42,14 @@ class LoginUserView(views.APIView):
 
         if not user:
             msg = _("Invalid credentials.")
-            return JsonResponse({"detail": msg}, status=400)
+            return JsonResponse({"detail": msg}, status=status.HTTP_400_BAD_REQUEST)
         else:
             login(request, user["user"])
             msg = _("Successfully logged in.")
             return JsonResponse({"detail": msg})
 
 
-class GetUserView(generics.RetrieveUpdateAPIView):
+class GetOrUpdateUserView(generics.RetrieveUpdateAPIView):
     """Manage the authenticated user"""
 
     serializer_class = UserSerializer
@@ -56,14 +61,14 @@ class GetUserView(generics.RetrieveUpdateAPIView):
         return self.request.user
 
 
-class LogoutUserView(APIView):
+class LogoutUserView(views.APIView):
     """Logout user from system"""
 
     @method_decorator(csrf_protect)
     def post(self, request, format=None):
         if not request.user.is_authenticated:
             msg = _("You're not logged in.")
-            return JsonResponse({"detail": msg}, status=400)
+            return JsonResponse({"detail": msg}, status=status.HTTP_400_BAD_REQUEST)
 
         logout(request)
         msg = _("Successfully logged out.")
