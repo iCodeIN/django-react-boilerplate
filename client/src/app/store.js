@@ -1,8 +1,10 @@
-import { configureStore } from '@reduxjs/toolkit';
-import counterReducer from '../features/counter/counterSlice';
+import { configureStore } from "@reduxjs/toolkit";
+import { navigationReducer } from "../components/Navigation/navigationSlice";
+import { spinnerReducer } from "../components/Spinner/spinnerSlice";
 
-export default configureStore({
+export const store = configureStore({
   reducer: {
-    counter: counterReducer,
+    spinner: spinnerReducer,
+    page: navigationReducer,
   },
 });

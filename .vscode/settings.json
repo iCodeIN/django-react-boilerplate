@@ -17,6 +17,7 @@
     "dotenv",
     "getenv",
     "gunicorn",
+    "notistack",
     "reduxjs",
     "runserver",
     "simplejwt",
