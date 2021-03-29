@@ -1,12 +1,16 @@
 import React, { useEffect } from "react";
 import { useDispatch } from "react-redux";
-import { Container, Typography } from "@material-ui/core";
+import { Container } from "@material-ui/core";
 
+import { SignInForm } from "../../components/Account/partials/SignInForm";
+import { Dashboard } from "../../components/Account/partials/Dashboard";
+import { SignUpForm } from "../../components/Account/partials/SignUpForm";
 import { navigation } from "../../components/Navigation/constants";
 import { updatePageTitle } from "../../components/Navigation/navigationSlice";
 import { useStyles } from "./styles";
 
-export function Account() {
+export function AccountPage(props) {
+  const { location } = props;
   const classes = useStyles();
   const dispatch = useDispatch();
 
@@ -14,20 +18,24 @@ export function Account() {
     dispatch(updatePageTitle(navigation.Account.title));
   });
 
+  let mainContainer = null;
+  switch (location.pathname) {
+    case "/login":
+      mainContainer = <SignInForm />;
+      break;
+    case "/register":
+      mainContainer = <SignUpForm />;
+      break;
+    case "/dashboard":
+      mainContainer = <Dashboard />;
+      break;
+    default:
+      break;
+  }
+
   return (
     <Container maxWidth="sm" className={classes.offset}>
-      <h1 style={{ textAlign: "center" }}>
-        <span
-          aria-label="Diamond"
-          role="img"
-          style={{ fontSize: "80px", display: "block", textAlign: "center" }}
-        >
-          👨🏻‍💻
-        </span>
-      </h1>
-      <Typography variant="h6" component="h1">
-        {navigation.Account.title}
-      </Typography>
+      {mainContainer}
     </Container>
   );
 }

@@ -2,8 +2,8 @@ import React from "react";
 import { Switch, Route } from "react-router-dom";
 import { SnackbarProvider } from "notistack";
 
-import { Home } from "./pages/Home";
-import { Account } from "./pages/Account";
+import { HomePage } from "./pages/Home";
+import { AccountPage } from "./pages/Account";
 
 import { Header } from "./components/Header";
 import { Footer } from "./components/Footer";
@@ -15,8 +15,10 @@ function App() {
       <Spinner />
       <Header />
       <Switch>
-        <Route path="/" exact component={Home} />
-        <Route path="/user" component={Account} />
+        <Route path="/" exact component={HomePage} />
+        <Route path="/login" component={AccountPage} />
+        <Route path="/register" component={AccountPage} />
+        <Route path="/dashboard" component={AccountPage} />
       </Switch>
       <Footer />
     </SnackbarProvider>

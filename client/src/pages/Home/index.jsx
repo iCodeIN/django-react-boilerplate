@@ -6,7 +6,7 @@ import { navigation } from "../../components/Navigation/constants";
 import { updatePageTitle } from "../../components/Navigation/navigationSlice";
 import { useStyles } from "./styles";
 
-export function Home() {
+export function HomePage() {
   const classes = useStyles();
   const dispatch = useDispatch();
 

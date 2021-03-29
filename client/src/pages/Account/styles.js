@@ -6,13 +6,4 @@ export const useStyles = makeStyles((theme) => ({
     paddingTop: theme.spacing(2),
     paddingBottom: theme.spacing(2),
   },
-  wrapper: {
-    marginTop: theme.spacing(2),
-    maxWidth: "100%",
-    overflow: "scroll",
-  },
-  paragraph: {
-    marginBottom: theme.spacing(2),
-    textAlign: "left",
-  },
 }));

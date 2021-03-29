@@ -36,20 +36,20 @@ export function Navigation() {
       onKeyDown={toggleDrawer(false)}
     >
       <List>
-        <RouterLink to="/" className={classes.menuItem}>
+        <RouterLink to={navigation.Home.link} className={classes.menuItem}>
           <ListItem button key="Home">
             <ListItemIcon>
               <Home />
             </ListItemIcon>
-            <ListItemText primary={navigation.Home.link} />
+            <ListItemText primary={navigation.Home.text} />
           </ListItem>
         </RouterLink>
-        <RouterLink to="/account" className={classes.menuItem}>
+        <RouterLink to={navigation.Account.link} className={classes.menuItem}>
           <ListItem button key="Account">
             <ListItemIcon>
               <Help />
             </ListItemIcon>
-            <ListItemText primary={navigation.Account.link} />
+            <ListItemText primary={navigation.Account.text} />
           </ListItem>
         </RouterLink>
       </List>

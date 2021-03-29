@@ -47,7 +47,10 @@ class UserSerializer(serializers.ModelSerializer):
             "email": {"required": True},
             "password": {"required": True, "write_only": True, "min_length": 9},
         }
-        read_only_fields = ("date_created", "date_modified", "username")
+        read_only_fields = (
+            "date_created",
+            "date_modified",
+        )
 
     def create(self, validated_data):
         """Create a new user with encrypted password and return it"""
@@ -73,7 +76,7 @@ class UserSerializer(serializers.ModelSerializer):
         user.email = email
         if password:
             user.set_password(password)
-        
+
         user.save()
 
         return user

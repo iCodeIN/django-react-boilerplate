@@ -11,8 +11,8 @@ SECRET_KEY = os.getenv("SECRET_KEY")  # Should CRASH if it's empty!
 
 # Security
 CSRF_COOKIE_SAMESITE = "Strict"
+CSRF_COOKIE_HTTPONLY = False
 SESSION_COOKIE_SAMESITE = "Strict"
-CSRF_COOKIE_HTTPONLY = True
 SESSION_COOKIE_HTTPONLY = True
 
 # Application definition
