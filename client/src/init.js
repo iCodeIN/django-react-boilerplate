@@ -2,7 +2,7 @@ import axios from "axios";
 import { useEffect } from "react";
 import { useDispatch } from "react-redux";
 
-import { signInSuccess } from "./components/Account/accountSlice";
+import { signInSuccess, setUserInitialized } from "./components/Account/accountSlice";
 import { showSpinner, hideSpinner } from "./components/Spinner/spinnerSlice";
 import { serverUrl } from "./app/constants";
 
@@ -24,6 +24,7 @@ export function InitApp() {
         console.log(err);
       }
       dispatch(hideSpinner());
+      dispatch(setUserInitialized());
     }
     fetchData();
   }, [dispatch]);

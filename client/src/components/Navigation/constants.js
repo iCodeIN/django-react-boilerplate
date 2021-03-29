@@ -5,6 +5,6 @@ export const navigation = {
   },
   Account: {
     title: "Account Page",
-    link: "/account",
+    link: "/dashboard",
   },
 };

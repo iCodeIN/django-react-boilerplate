@@ -2,14 +2,12 @@ import React, { useEffect } from "react";
 import { useSelector } from "react-redux";
 import { useHistory } from "react-router-dom";
 import { Container, Typography } from "@material-ui/core";
-import { useSnackbar } from "notistack";
 
 import { Footer } from "../../Footer";
 import { useStyles } from "../styles";
 
 export function Dashboard() {
   const history = useHistory();
-  const { enqueueSnackbar } = useSnackbar();
   const classes = useStyles();
   const user = useSelector((state) => state.account.user);
   const isLoggedIn = useSelector((state) => state.account.isLoggedIn);
@@ -17,11 +15,8 @@ export function Dashboard() {
   useEffect(() => {
     if (!isLoggedIn) {
       history.push("/login");
-      enqueueSnackbar("Please log in.", {
-        variant: "info",
-      });
     }
-  }, [history, isLoggedIn, enqueueSnackbar]);
+  }, [history, isLoggedIn]);
 
   return user ? (
     <>

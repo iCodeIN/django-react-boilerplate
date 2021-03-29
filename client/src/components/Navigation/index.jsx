@@ -41,7 +41,7 @@ export function Navigation() {
             <ListItemIcon>
               <Home />
             </ListItemIcon>
-            <ListItemText primary={navigation.Home.text} />
+            <ListItemText primary={navigation.Home.title} />
           </ListItem>
         </RouterLink>
         <RouterLink to={navigation.Account.link} className={classes.menuItem}>
@@ -49,7 +49,7 @@ export function Navigation() {
             <ListItemIcon>
               <Help />
             </ListItemIcon>
-            <ListItemText primary={navigation.Account.text} />
+            <ListItemText primary={navigation.Account.title} />
           </ListItem>
         </RouterLink>
       </List>

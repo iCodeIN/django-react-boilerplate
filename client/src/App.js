@@ -1,4 +1,5 @@
 import React from "react";
+import { useSelector } from "react-redux";
 import { Switch, Route } from "react-router-dom";
 import { SnackbarProvider } from "notistack";
 
@@ -10,16 +11,24 @@ import { Footer } from "./components/Footer";
 import { Spinner } from "./components/Spinner";
 
 function App() {
+  const isUserInitialized = useSelector(
+    (state) => state.account.isUserInitialized
+  );
+
   return (
     <SnackbarProvider maxSnack={3}>
       <Spinner />
-      <Header />
-      <Switch>
-        <Route path="/" exact component={HomePage} />
-        <Route path="/login" component={AccountPage} />
-        <Route path="/register" component={AccountPage} />
-        <Route path="/dashboard" component={AccountPage} />
-      </Switch>
+      {isUserInitialized && (
+        <>
+          <Header />
+          <Switch>
+            <Route path="/" exact component={HomePage} />
+            <Route path="/login" component={AccountPage} />
+            <Route path="/register" component={AccountPage} />
+            <Route path="/dashboard" component={AccountPage} />
+          </Switch>
+        </>
+      )}
       <Footer />
     </SnackbarProvider>
   );

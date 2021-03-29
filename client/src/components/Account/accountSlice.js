@@ -8,12 +8,16 @@ import { serverUrl } from "../../app/constants";
 export const accountSlice = createSlice({
   name: "account",
   initialState: {
+    isUserInitialized: false,
     isLoggedIn: false,
     user: null,
     error: false,
     csrfToken: null,
   },
   reducers: {
+    setUserInitialized: (state) => {
+      state.isUserInitialized = true;
+    },
     signActionFail: (state) => {
       state.error = true;
     },
@@ -37,6 +41,7 @@ export const accountSlice = createSlice({
 });
 
 export const {
+  setUserInitialized,
   signActionFail,
   signInSuccess,
   signOutSuccess,
@@ -90,7 +95,6 @@ export const signIn = (credentials) => async (dispatch) => {
         }
       );
 
-      console.log("LOGIN:", data);
       if (data.status !== 200) {
         dispatch(hideSpinner());
         signActionFail();
@@ -100,7 +104,6 @@ export const signIn = (credentials) => async (dispatch) => {
       dispatch(updateCsrfToken());
     }
     const user = await dispatch(getUserData());
-    console.log("ME:", user);
     dispatch(signInSuccess(user));
     responseStatus = true;
   } catch (error) {
@@ -108,6 +111,7 @@ export const signIn = (credentials) => async (dispatch) => {
     console.log(error.response);
     dispatch(signActionFail());
   }
+
   dispatch(hideSpinner());
   return responseStatus;
 };
@@ -134,7 +138,6 @@ export const signUp = (credentials) => async (dispatch) => {
         }
       );
 
-      console.log("REGISTER:", data);
       if (data.status >= 400) {
         dispatch(hideSpinner());
         signActionFail();
