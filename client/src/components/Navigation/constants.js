@@ -7,4 +7,8 @@ export const navigation = {
     title: "Account Page",
     link: "/dashboard",
   },
+  Error: {
+    title: "Page Not Found",
+    link: "",
+  },
 };
