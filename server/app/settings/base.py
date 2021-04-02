@@ -32,8 +32,6 @@ custom_apps = [
     "server.users",
 ]
 
-INSTALLED_APPS = django_apps + extra_app + custom_apps
-
 MIDDLEWARE = [
     "django.middleware.security.SecurityMiddleware",
     "django.contrib.sessions.middleware.SessionMiddleware",

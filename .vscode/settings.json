@@ -18,10 +18,12 @@
     "getenv",
     "gunicorn",
     "notistack",
+    "redoc",
     "reduxjs",
     "runserver",
     "simplejwt",
     "strtobool",
-    "wsgi"
+    "wsgi",
+    "yasg"
   ]
 }
