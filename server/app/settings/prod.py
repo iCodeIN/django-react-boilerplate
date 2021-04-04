@@ -4,6 +4,9 @@ from distutils.util import strtobool
 debug = os.getenv("DEBUG")
 DEBUG = bool(strtobool(debug)) or False
 
+# Sendgrid email config
+SENDGRID_API_KEY = os.getenv("SENDGRID_API_KEY")
+
 ALLOWED_HOSTS = []
 allowed_hosts = os.getenv("ALLOWED_HOSTS") or ""
 for host in allowed_hosts.split(","):

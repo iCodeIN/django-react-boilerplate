@@ -22,7 +22,7 @@ COPY --from=client /client/build /client/build
 
 WORKDIR /
 # SECRET_KEY is only included here to avoid raising an error when generating static files.
-RUN SECRET_KEY=supersecret \
+RUN SECRET_KEY=collectstatic \
     python3 /server/manage.py collectstatic --noinput
 
 EXPOSE $PORT

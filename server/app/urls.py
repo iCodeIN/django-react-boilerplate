@@ -1,4 +1,3 @@
-import os
 from django.contrib import admin
 from django.urls import path, include
 from django.conf import settings
@@ -16,8 +15,7 @@ urlpatterns = [
     re_path(r"^.*", index, name="index"),
 ]
 
-debug = os.getenv("DEBUG", False)
-if debug == True:
+if settings.DEBUG == True:
     from .yasg import yasg_urlpatterns
 
     urlpatterns = yasg_urlpatterns + urlpatterns

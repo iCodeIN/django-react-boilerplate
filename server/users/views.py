@@ -12,8 +12,9 @@ from rest_framework import (
     permissions,
     status,
 )
-from server.users.serializers import UserSerializer, LoginSerializer
 
+from server.users.serializers import UserSerializer, LoginSerializer
+from server.utils.email import send_email
 
 def get_csrf(request):
     msg = _("CSRF cookie set.")
@@ -22,10 +23,33 @@ def get_csrf(request):
     return response
 
 
-class RegisterUserView(generics.CreateAPIView):
+class RegisterUserView(views.APIView):
     """Create a new user in the system"""
 
     serializer_class = UserSerializer
+
+    @method_decorator(csrf_protect)
+    def post(self, request, *args, **kwargs):
+        serializer = UserSerializer(data=request.data)
+        serializer.is_valid(raise_exception=True)
+        user = serializer.validated_data
+
+        if not user:
+            msg = _("User cannot be registered.")
+            return JsonResponse({"detail": msg}, status=status.HTTP_400_BAD_REQUEST)
+        else:
+            serializer.save()
+            msg = _("User successfully registered.")
+            message = _(
+                "Your account has been created. Use your credentials to log in."
+            )
+            send_email(
+                subject=msg,
+                message=message,
+                from_email=None,
+                recipient_list=[user["email"]],
+            )
+            return JsonResponse({"detail": msg}, status=status.HTTP_201_CREATED)
 
 
 class LoginUserView(views.APIView):

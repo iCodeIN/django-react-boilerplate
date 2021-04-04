@@ -1,3 +1,4 @@
 -r requirements-base.txt
 
 gunicorn>=20.0.4,<21.0.0
+sendgrid>=6.6.0,<7
