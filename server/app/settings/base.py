@@ -9,6 +9,9 @@ CLIENT_DIR = ROOT_DIR / "client"  # /client/
 # GENERAL
 SECRET_KEY = os.getenv("SECRET_KEY")  # Should CRASH if it's empty!
 
+# Set the current environment
+ENVIRONMENT = os.getenv("ENVIRONMENT", "")
+
 # Security
 CSRF_COOKIE_SAMESITE = "Strict"
 CSRF_COOKIE_HTTPONLY = False

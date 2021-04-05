@@ -11,7 +11,7 @@ EMAIL_USE_TLS = False
 
 ALLOWED_HOSTS = ["localhost", "0.0.0.0", "127.0.0.1", "backend"]
 
-if SECRET_KEY != "collectstatic":
+if ENVIRONMENT == "dev":
     extra_app += [
         "drf_yasg",
     ]

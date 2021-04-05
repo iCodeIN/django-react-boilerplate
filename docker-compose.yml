@@ -13,6 +13,7 @@ services:
              python3 manage.py runserver 0.0.0.0:8000"
     environment:
       - SECRET_KEY=supersecret
+      - ENVIRONMENT=dev
       - DB_HOST=db
       - DB_NAME=postgres
       - DB_USER=postgres

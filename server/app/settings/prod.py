@@ -6,6 +6,7 @@ DEBUG = bool(strtobool(debug)) or False
 
 # Sendgrid email config
 SENDGRID_API_KEY = os.getenv("SENDGRID_API_KEY")
+DEFAULT_FROM_EMAIL = os.getenv("DEFAULT_FROM_EMAIL", "")
 
 ALLOWED_HOSTS = []
 allowed_hosts = os.getenv("ALLOWED_HOSTS") or ""

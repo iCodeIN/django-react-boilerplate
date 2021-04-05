@@ -15,7 +15,7 @@ urlpatterns = [
     re_path(r"^.*", index, name="index"),
 ]
 
-if settings.DEBUG == True:
+if settings.ENVIRONMENT == "dev":
     from .yasg import yasg_urlpatterns
 
     urlpatterns = yasg_urlpatterns + urlpatterns
