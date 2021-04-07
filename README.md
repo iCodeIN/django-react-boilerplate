@@ -1,10 +1,13 @@
 # Django (DRF) & React (JS) boilerplate on Postgres & Docker
 
-## Features
+## Stack
 
 - Postgres
 - Django + Django Rest Framework
 - React + Redux
+
+## Features
+
 - MaterialUI
 
 ## Requirements

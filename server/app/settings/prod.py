@@ -1,5 +1,6 @@
-from .base import *
 from distutils.util import strtobool
+
+from .base import *
 
 debug = os.getenv("DEBUG")
 DEBUG = bool(strtobool(debug)) or False
