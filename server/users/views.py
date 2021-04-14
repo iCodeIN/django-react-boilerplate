@@ -1,26 +1,47 @@
-from django.views.decorators.csrf import csrf_protect
-from django.utils.decorators import method_decorator
-
+from django.conf import settings
 from django.contrib.auth import login, logout
+from django.dispatch import receiver
 from django.http import JsonResponse
 from django.middleware.csrf import get_token
+from django.utils.decorators import method_decorator
 from django.utils.translation import ugettext_lazy as _
-from rest_framework import (
-    views,
-    generics,
-    authentication,
-    permissions,
-    status,
-)
+from django.views.decorators.csrf import csrf_protect
+from django_rest_passwordreset.signals import reset_password_token_created
+from rest_framework import authentication, generics, permissions, status, views
 
-from server.users.serializers import UserSerializer, LoginSerializer
+from server.users.serializers import LoginSerializer, UserSerializer
 from server.utils.email import send_email
+
 
 def get_csrf(request):
     msg = _("CSRF cookie set.")
     response = JsonResponse({"detail": msg})
     response["X-CSRFToken"] = get_token(request)
     return response
+
+
+@receiver(reset_password_token_created)
+def password_reset_token_created(
+    sender, instance, reset_password_token, *args, **kwargs
+):
+
+    base_url = "{}://{}/password_reset".format(
+        instance.request.scheme, settings.SITE_URL
+    )
+    sbj = _("Reset your password.")
+    msg = _(
+        "To reset your password use this link {}?token={}".format(
+            base_url,
+            reset_password_token.key,
+        )
+    )
+
+    send_email(
+        subject=sbj,
+        message=msg,
+        from_email=None,
+        recipient_list=[reset_password_token.user.email],
+    )
 
 
 class RegisterUserView(views.APIView):

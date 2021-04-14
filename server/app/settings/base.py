@@ -29,6 +29,7 @@ django_apps = [
 ]
 extra_app = [
     "rest_framework",
+    "django_rest_passwordreset",
 ]
 custom_apps = [
     "server.core",

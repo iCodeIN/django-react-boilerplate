@@ -17,3 +17,5 @@ if ENVIRONMENT == "dev":
     ]
 
 INSTALLED_APPS = django_apps + extra_app + custom_apps
+
+SITE_URL = "localhost:3000"

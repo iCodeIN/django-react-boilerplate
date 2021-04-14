@@ -19,3 +19,5 @@ INSTALLED_APPS = django_apps + extra_app + custom_apps
 # Security
 CSRF_COOKIE_SECURE = True
 SESSION_COOKIE_SECURE = True
+
+SITE_URL = os.getenv("SITE_URL")

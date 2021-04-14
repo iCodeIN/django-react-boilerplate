@@ -1,4 +1,4 @@
-from django.contrib.auth import get_user_model, authenticate
+from django.contrib.auth import authenticate, get_user_model
 from django.utils.translation import ugettext_lazy as _
 from rest_framework import serializers
 
@@ -45,7 +45,7 @@ class UserSerializer(serializers.ModelSerializer):
         )
         extra_kwargs = {
             "email": {"required": True},
-            "password": {"required": True, "write_only": True, "min_length": 9},
+            "password": {"required": True, "write_only": True, "min_length": 8},
         }
         read_only_fields = (
             "date_created",
