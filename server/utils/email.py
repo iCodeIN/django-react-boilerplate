@@ -20,7 +20,7 @@ else:
     from sendgrid.helpers.mail import Mail
 
     def send_email(subject, message, from_email, recipient_list):
-        from_email=from_email or settings.DEFAULT_FROM_EMAIL
+        from_email = from_email or settings.DEFAULT_FROM_EMAIL
         email_message = Mail(
             from_email=from_email,
             to_emails=recipient_list,
