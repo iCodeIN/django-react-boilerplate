@@ -7,7 +7,7 @@ from django.views.static import serve
 from server.app.views import index
 
 urlpatterns = [
-    path("api/v1/users/", include("server.users.urls")),
+    path("api/v1/accounts/", include("server.accounts.urls")),
     path("admin/", admin.site.urls),
     re_path(r"^static/(?P<path>.*)$", serve, {"document_root": settings.STATIC_ROOT}),
     re_path(r"^media/(?P<path>.*)$", serve, {"document_root": settings.MEDIA_ROOT}),

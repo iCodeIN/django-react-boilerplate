@@ -29,6 +29,7 @@
     "dotenv",
     "getenv",
     "gunicorn",
+    "noqa",
     "notistack",
     "redoc",
     "reduxjs",

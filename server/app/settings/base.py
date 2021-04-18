@@ -33,7 +33,7 @@ extra_app = [
 ]
 custom_apps = [
     "server.core",
-    "server.users",
+    "server.accounts",
 ]
 
 MIDDLEWARE = [

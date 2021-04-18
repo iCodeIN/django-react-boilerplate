@@ -1,14 +1,10 @@
 from django.contrib import admin
-
-# Register your models here.
-from django.contrib import admin
-from django.contrib.auth.admin import UserAdmin as BaseUserAdmin
+from django.contrib.auth import get_user_model
+from django.contrib.auth.admin import UserAdmin
 from django.utils.translation import gettext as _
 
-from server.core.models import User
 
-
-class UserAdmin(BaseUserAdmin):
+class AccountAdmin(UserAdmin):
     ordering = ["username"]
     list_display = [
         "username",
@@ -46,11 +42,11 @@ class UserAdmin(BaseUserAdmin):
             None,
             {
                 "classes": ("wide",),
-                "fields": ("email", "password1", "password2", "is_staff", "is_active"),
+                "fields": ("email", "password", "is_staff", "is_active"),
             },
         ),
     )
     search_fields = ["username", "email"]
 
 
-admin.site.register(User, UserAdmin)
+admin.site.register(get_user_model(), AccountAdmin)
