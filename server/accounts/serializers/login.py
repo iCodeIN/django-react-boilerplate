@@ -1,3 +1,5 @@
+from typing import Dict
+
 from django.contrib.auth import authenticate
 from django.utils.translation import ugettext_lazy as _
 from rest_framework import serializers
@@ -11,7 +13,7 @@ class LoginSerializer(serializers.Serializer):
         style={"input_type": "password"}, trim_whitespace=False
     )
 
-    def validate(self, attrs):
+    def validate(self, attrs: Dict[str, str]):
         """Validate and authenticate the user"""
         username = attrs.get("username")
         password = attrs.get("password")

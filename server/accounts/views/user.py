@@ -16,9 +16,7 @@ def password_reset_token_created(
     sender, instance, reset_password_token, *args, **kwargs
 ):
 
-    base_url = "{}://{}/password_reset".format(
-        instance.request.scheme, settings.SITE_URL
-    )
+    base_url = f"{instance.request.scheme}://{settings.SITE_URL}/reset-password"
     sbj = _("Reset your password.")
     msg = _(
         "To reset your password use this link {}?token={}".format(
