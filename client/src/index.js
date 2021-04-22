@@ -9,14 +9,12 @@ import { store } from "./app/store";
 import { InitApp } from "./init";
 
 ReactDOM.render(
-  <React.StrictMode>
-    <Provider store={store}>
-      <InitApp />
-      <CssBaseline />
-      <BrowserRouter>
-        <App />
-      </BrowserRouter>
-    </Provider>
-  </React.StrictMode>,
+  <Provider store={store}>
+    <InitApp />
+    <CssBaseline />
+    <BrowserRouter>
+      <App />
+    </BrowserRouter>
+  </Provider>,
   document.getElementById("root")
 );

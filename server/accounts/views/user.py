@@ -3,7 +3,7 @@ from django.contrib.auth import logout
 from django.dispatch import receiver
 from django.utils.translation import ugettext_lazy as _
 from django_rest_passwordreset.signals import reset_password_token_created
-from rest_framework import authentication, permissions, status
+from rest_framework import authentication, status
 from rest_framework.response import Response
 from rest_framework.viewsets import ModelViewSet
 
@@ -37,7 +37,7 @@ class UserViewSet(ModelViewSet):
     """
     Accounts ViewSet provides actions: register, update and logout
 
-    POST for register a new user
+    POST "/" for register a new user
     GET 'me/ to retrieve a logged in user profile
     PATH 'me/' to partial update a logged in user profile
     DELETE 'me/' to logout a logged in user
@@ -45,10 +45,16 @@ class UserViewSet(ModelViewSet):
 
     serializer_class = UserSerializer
     authentication_classes = (authentication.SessionAuthentication,)
-    permission_classes = (permissions.IsAuthenticated,)
+
+    def retrieve(self, request, *args, **kwargs) -> Response:
+        """Retrieve and return authentication user"""
+        if request.user.is_anonymous:
+            msg = _("You're not logged in.")
+            return Response(data={"detail": msg}, status=status.HTTP_400_BAD_REQUEST)
+
+        return super().retrieve(request, *args, **kwargs)
 
     def get_object(self):
-        """Retrieve and return authentication user"""
         return self.request.user
 
     def perform_create(self, serializer):

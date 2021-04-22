@@ -16,7 +16,7 @@ class UserSerializer(serializers.ModelSerializer):
             "password",
         )
         extra_kwargs = {
-            "email": {"required": True},
+            "email": {"required": True, "allow_blank": False},
             "password": {
                 "required": True,
                 "write_only": True,
@@ -32,7 +32,7 @@ class UserSerializer(serializers.ModelSerializer):
         try:
             password_validation.validate_password(value)
         except exceptions.ValidationError as exc:
-            raise serializers.ValidationError(str(exc))
+            raise exc
         return value
 
     def create(self, validated_data):

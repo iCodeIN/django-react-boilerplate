@@ -15,6 +15,7 @@ export function SignUpForm() {
 
   const isUserLoggedIn = useSelector((state) => state.account.isLoggedIn);
   const isError = useSelector((state) => state.account.error);
+  const errorMessage = useSelector((state) => state.account.errorMessage);
 
   useEffect(() => {
     if (isUserLoggedIn) {
@@ -35,7 +36,7 @@ export function SignUpForm() {
   }
 
   function clearError() {
-    dispatch(setError(false));
+    dispatch(setError({ error: false, errorMessage: "" }));
   }
 
   return (
@@ -46,7 +47,7 @@ export function SignUpForm() {
         </Typography>
         {isError && (
           <Typography component="div">
-            Something went wrong.
+            {errorMessage && errorMessage.detail}
           </Typography>
         )}
         <form className={classes.form} noValidate onSubmit={formHandler}>
@@ -58,9 +59,9 @@ export function SignUpForm() {
             id="username"
             label="User Name"
             name="username"
-            autoComplete="username"
             autoFocus
-            error={isError}
+            error={!!errorMessage?.username?.length}
+            helperText={errorMessage?.username}
             onFocus={clearError}
           />
           <TextField
@@ -71,9 +72,8 @@ export function SignUpForm() {
             id="email"
             label="Email"
             name="email"
-            autoComplete="email"
-            autoFocus
-            error={isError}
+            error={!!errorMessage?.email?.length}
+            helperText={errorMessage?.email}
             onFocus={clearError}
           />
           <TextField
@@ -85,8 +85,8 @@ export function SignUpForm() {
             label="Password"
             type="password"
             id="password"
-            autoComplete="current-password"
-            error={isError}
+            error={!!errorMessage?.password?.length}
+            helperText={errorMessage?.password?.join(" ")}
             onFocus={clearError}
           />
           <Button

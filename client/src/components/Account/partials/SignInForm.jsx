@@ -15,6 +15,7 @@ export function SignInForm() {
 
   const isUserLoggedIn = useSelector((state) => state.account.isLoggedIn);
   const isError = useSelector((state) => state.account.error);
+  const errorMessage = useSelector((state) => state.account.errorMessage);
 
   useEffect(() => {
     if (isUserLoggedIn) {
@@ -36,7 +37,7 @@ export function SignInForm() {
   }
 
   function clearError() {
-    dispatch(setError(false));
+    dispatch(setError({ error: false, errorMessage: "" }));
   }
 
   return (
@@ -47,7 +48,7 @@ export function SignInForm() {
         </Typography>
         {isError && (
           <Typography component="div">
-            Login or password is incorrect.
+            {errorMessage && errorMessage.detail}
           </Typography>
         )}
         <form className={classes.form} noValidate onSubmit={formHandler}>
@@ -59,9 +60,9 @@ export function SignInForm() {
             id="username"
             label="User Name"
             name="username"
-            autoComplete="username"
             autoFocus
-            error={isError}
+            error={errorMessage && !!errorMessage.username}
+            helperText={errorMessage && errorMessage.username}
             onFocus={clearError}
           />
           <TextField
@@ -73,8 +74,8 @@ export function SignInForm() {
             label="Password"
             type="password"
             id="password"
-            autoComplete="current-password"
-            error={isError}
+            error={errorMessage && !!errorMessage.password}
+            helperText={errorMessage && errorMessage.password}
             onFocus={clearError}
           />
           <Button
@@ -89,6 +90,9 @@ export function SignInForm() {
         </form>
         <Typography component="div">
           Have no account? <Link to="/register">Register</Link>.
+        </Typography>
+        <Typography component="div">
+          Forgot password? <Link to="/reset-password">Reset</Link>.
         </Typography>
       </div>
     </Container>

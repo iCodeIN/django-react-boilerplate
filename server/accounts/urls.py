@@ -13,9 +13,9 @@ user_perform = views.UserViewSet.as_view(
 
 urlpatterns = [
     path("", user_register, name="users-register"),
-    path("csrf-token/", get_csrf, name="users-get-csrf-token"),
     path("login/", user_login, name="users-login"),
     path("me/", user_perform, name="users-perform"),
+    path("csrf-token/", get_csrf, name="users-get-csrf-token"),
     path(
         "password-reset/",
         include("django_rest_passwordreset.urls", namespace="users-password-reset"),

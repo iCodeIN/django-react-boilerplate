@@ -25,6 +25,7 @@ function App() {
           <Switch>
             <Route path="/" exact component={HomePage} />
             <Route path="/login" component={AccountPage} />
+            <Route path="/reset-password" component={AccountPage} />
             <Route path="/register" component={AccountPage} />
             <Route path="/dashboard" component={AccountPage} />
             <Route component={Error404Page} />
