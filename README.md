@@ -14,16 +14,16 @@ Database: PostgreSQL
 
 - Python 3.9
 - Django 3.1
-- Django Rest Framework ..
+- Django Rest Framework 3.12
 - Custom user model
 - Authentication via Django Session (http-only cookie)
 - CSRF token for each POST/UPDATE/DELETE action
 
 ## Frontend
 
-- React 16
-- Redux-toolkit ..
-- CSS-in-JS: MaterialUI
+- React 17
+- Redux-toolkit 1.5
+- CSS-in-JS: MaterialUI 4
 
 ## Infrastructure
 
@@ -32,10 +32,11 @@ Database: PostgreSQL
 - Optimized development and production settings
 - Send email via [Sendgrid](https://sendgrid.com) for production and MailHog for development
 
-# Requirements
+# Optional requirements
 
 - Docker
 - docker-compose
+- PostgreSQL
 
 # Installation
 
@@ -53,20 +54,82 @@ If all works well, you should be able to create an admin account with:
 
 ## Installation without docker
 
+Local installation of PostgreSQL is required.
+
 ### Backend
+
+```sh
+python3 -m venv venv
+. venv/bin/activate
+pip install -r server/requirements/requirements-dev.txt
+```
 
 ### Frontend
 
+```sh
+cd client
+npm i
+```
+
 # Development
+
+Both folders `server` and `client` contain `.devcontainer` and `.vscode` configs for VSCode so they can be open separately to work with the backend or frontend dockerized code only.
 
 ## Development with docker
 
+`docker-compose up`
+
+Available resources:
+- `http://localhost:8000/admin` Django Admin Panel
+- `http://localhost:8000/redoc/` ReDoc
+- `http://localhost:8000/swagger/` Swagger
+- `http://localhost:3000` React SPA client
+- `http://localhost:9000` PostgreSQL Adminer panel
+- `http://localhost:8025` MailHog client
+
 ## Development without docker
+
+Run your local Postgres DB and run the server
+
+```bash
+SECRET_KEY=supersecret \
+DB_HOST=localhost \
+DB_NAME=postgres \
+DB_USER=postgres \
+DB_PASSWORD=password \
+python server/manage.py runserver
+```
+
+Run the client
+
+```bash
+cd client
+npm start
+```
 
 # Deployment
 
+Deployment to Heroku example
+
+Server name: ultimate-scrubland-12345
+
 ## Deployment with docker
+
+```sh
+heroku stack:set container
+git push heroku main
+```
 
 ## Deployment without docker
 
-# Roadmap
+```sh
+heroku create
+heroku buildpacks:add --index 1 heroku/nodejs
+heroku buildpacks:add --index 2 heroku/python
+heroku addons:create heroku-postgresql:hobby-dev
+
+git remote add heroku https://git.heroku.com/ultimate-scrubland-12345.git
+git add .
+git commit -m "first commit"
+git push heroku main
+```
