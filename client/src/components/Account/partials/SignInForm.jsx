@@ -61,8 +61,8 @@ export function SignInForm() {
             label="User Name"
             name="username"
             autoFocus
-            error={errorMessage && !!errorMessage.username}
-            helperText={errorMessage && errorMessage.username}
+            error={!!errorMessage?.username}
+            helperText={errorMessage?.username}
             onFocus={clearError}
           />
           <TextField
@@ -74,8 +74,8 @@ export function SignInForm() {
             label="Password"
             type="password"
             id="password"
-            error={errorMessage && !!errorMessage.password}
-            helperText={errorMessage && errorMessage.password}
+            error={!!errorMessage?.password}
+            helperText={errorMessage?.password}
             onFocus={clearError}
           />
           <Button

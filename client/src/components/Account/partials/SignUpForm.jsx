@@ -60,7 +60,7 @@ export function SignUpForm() {
             label="User Name"
             name="username"
             autoFocus
-            error={!!errorMessage?.username?.length}
+            error={!!errorMessage?.username}
             helperText={errorMessage?.username}
             onFocus={clearError}
           />
@@ -72,7 +72,7 @@ export function SignUpForm() {
             id="email"
             label="Email"
             name="email"
-            error={!!errorMessage?.email?.length}
+            error={!!errorMessage?.email}
             helperText={errorMessage?.email}
             onFocus={clearError}
           />
