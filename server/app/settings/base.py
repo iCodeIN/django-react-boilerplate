@@ -30,10 +30,12 @@ django_apps = [
 extra_app = [
     "rest_framework",
     "django_rest_passwordreset",
+    "ckeditor",
 ]
 custom_apps = [
     "server.core",
     "server.accounts",
+    "server.pages",
 ]
 
 MIDDLEWARE = [
@@ -82,6 +84,13 @@ DJANGO_REST_PASSWORDRESET_TOKEN_CONFIG = {
     "OPTIONS": {"min_length": 64, "max_length": 64},
 }
 
+# CKEditor
+CKEDITOR_CONFIGS = {
+    "default": {
+        "toolbar": "full",
+    }
+}
+
 # Password validation
 # https://docs.djangoproject.com/en/3.0/ref/settings/#auth-password-validators
 
@@ -122,7 +131,10 @@ STATICFILES_DIRS = [
 TEMPLATES = [
     {
         "BACKEND": "django.template.backends.django.DjangoTemplates",
-        "DIRS": [os.path.join(CLIENT_DIR, "build")],
+        "DIRS": [
+            os.path.join(CLIENT_DIR, "build"),  # React build
+            os.path.join(BASE_DIR, "templates"),  # Custom templates
+        ],
         "APP_DIRS": True,
         "OPTIONS": {
             "context_processors": [
