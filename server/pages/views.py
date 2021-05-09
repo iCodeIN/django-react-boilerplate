@@ -9,7 +9,7 @@ class PageSerializerViewSet(viewsets.ReadOnlyModelViewSet):
         "default": None,
     }
 
-    def get_serializer_class(self):
+    def get_serializer_class(self):  # type: ignore
         return self.serializers.get(self.action, self.serializers["list"])
 
 

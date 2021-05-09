@@ -3,7 +3,7 @@
     "model": "core.page",
     "pk": 1,
     "fields": {
-      "url": "/api/v1/pages/about/",
+      "url": "about",
       "title": "About the project",
       "content": "<h1>About the project.</h1><p>This is the Django + React starter project.</p>"
     }
@@ -12,7 +12,7 @@
     "model": "core.page",
     "pk": 2,
     "fields": {
-      "url": "/api/v1/pages/terms/",
+      "url": "terms",
       "title": "Terms of use",
       "content": "<h1>Terms of use</h1><pv>In publishing and graphic design, Lorem ipsum is a placeholder text commonly used to demonstrate the visual form of a document or a typeface without relying on meaningful content.</p><p>Reference site about Lorem Ipsum, giving information on its origins, as well as a random Lipsum generator.</p>"
     }
@@ -21,7 +21,7 @@
     "model": "core.page",
     "pk": 3,
     "fields": {
-      "url": "/api/v1/pages/privacy/",
+      "url": "privacy",
       "title": "Privacy policy",
       "content": "<p>We value your privacy.</p><p>We never sell your data to third party. We only use it for intended purposes. And we only send you newsletters if you willingly subscribe.</p>"
     }

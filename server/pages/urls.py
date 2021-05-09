@@ -11,5 +11,5 @@ pages_get = views.PagesViewSet.as_view({"get": "retrieve"})
 
 urlpatterns = [
     path("", pages_list, name="pages-list"),
-    path("<slug:url>/", pages_get, name="pages-get"),
+    path("<str:url>/", pages_get, name="pages-get"),
 ]
