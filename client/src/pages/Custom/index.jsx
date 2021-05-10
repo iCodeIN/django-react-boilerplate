@@ -30,6 +30,19 @@ export function CustomPage() {
       />
     </Container>
   ) : (
-    <Typography component="p">Nothing</Typography>
+    <Container maxWidth="sm" className={classes.offset}>
+      <h1 style={{ textAlign: "center" }}>
+        <span
+          aria-label="Diamond"
+          role="img"
+          style={{ fontSize: "80px", display: "block", textAlign: "center" }}
+        >
+          😿
+        </span>
+      </h1>
+      <Typography variant="h6" component="h1">
+        404 not found
+      </Typography>
+    </Container>
   );
 }

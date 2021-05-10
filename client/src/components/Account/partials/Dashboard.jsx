@@ -118,7 +118,6 @@ export function Dashboard() {
           </Button>
         </form>
       </Container>
-      <Footer />
     </>
   ) : (
     <>No data</>

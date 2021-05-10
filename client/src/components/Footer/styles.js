@@ -7,10 +7,7 @@ export const useStyles = makeStyles((theme) => ({
     width: "100%",
     display: "flex",
     justifyContent: "center",
-    position: "fixed",
     flexDirection: "column",
-    bottom: 0,
-    left: 0,
   },
   footerItem: {
     display: "flex",
