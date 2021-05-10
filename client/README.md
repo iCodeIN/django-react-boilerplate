@@ -16,30 +16,28 @@ JavaScript, React + Redux
 
 ## Installation with docker
 
-Install [Docker](https://docs.docker.com/install/) and (Docker-Compose)[https://docs.docker.com/compose/]. Start your virtual machines with the following shell command:
+Install [Docker](https://docs.docker.com/install/) and [Docker-Compose](https://docs.docker.com/compose/). Start your virtual machines with the following shell command:
 
-`docker-compose build`
-
-If all works well, you should be able to create an admin account with:
-
-`docker-compose run backend python manage.py createsuperuser`
+From `root` folder run `docker-compose build frontend` or use `Dockerfile` from this (`client`) folder
 
 ## Installation without docker
 
-Local installation of PostgreSQL is required.
-
-### Backend
-
 ```sh
-python3 -m venv venv
-. venv/bin/activate
-pip install -r server/requirements/requirements-dev.txt
-```
-
-### Frontend
-
-```sh
-cd client
 npm i
 ```
 
+# Development
+
+Backend endpoint should available at `http://localhost:3000` for proper work of the client part.
+
+## Development with docker
+
+From `root` folder run `docker-compose up frontend` or use `Dockerfile` from this (`client`) folder.
+
+Open `http://localhost:3000`
+
+## Development without docker
+
+```bash
+npm start
+```

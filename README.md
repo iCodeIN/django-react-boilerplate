@@ -44,7 +44,7 @@ Install backend and frontend dependencies
 
 ## Installation with docker
 
-Install [Docker](https://docs.docker.com/install/) and (Docker-Compose)[https://docs.docker.com/compose/]. Start your virtual machines with the following shell command:
+Install [Docker](https://docs.docker.com/install/) and [Docker-Compose](https://docs.docker.com/compose/). Start your virtual machines with the following shell command:
 
 `docker-compose build`
 
