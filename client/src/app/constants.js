@@ -1,4 +1,4 @@
-export const serverUrl = "api/";
+export const serverUrl = "/api/";
 
 /* Accounts URLs */
 export const accountsUrl = `${serverUrl}v1/accounts/`;

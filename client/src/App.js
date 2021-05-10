@@ -5,6 +5,7 @@ import { SnackbarProvider } from "notistack";
 
 import { HomePage } from "./pages/Home";
 import { AccountPage } from "./pages/Account";
+import { CustomPage } from "./pages/Custom";
 import { Error404Page } from "./pages/Error";
 
 import { Header } from "./components/Header";
@@ -28,6 +29,7 @@ function App() {
             <Route path="/reset-password" component={AccountPage} />
             <Route path="/register" component={AccountPage} />
             <Route path="/dashboard" component={AccountPage} />
+            <Route path="/pages/:page" component={CustomPage} />
             <Route component={Error404Page} />
           </Switch>
         </>

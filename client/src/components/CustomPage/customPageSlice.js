@@ -14,7 +14,7 @@ export const customPageSlice = createSlice({
       state.pagesList = action.payload;
     },
     setCustomPage: (state, action) => {
-      const {url} = action.payload;
+      const { url } = action.payload;
       state.pages[url] = action.payload;
     },
   },
@@ -36,13 +36,17 @@ export const getCustomPagesList = () => async (dispatch) => {
     dispatch(setPagesList(customPagesList));
   } catch (error) {
     console.log("SERVER ERROR?!");
-    console.log(error.response);
+    console.log(error);
   }
 };
 
 export const getCustomPage = (pageUrl = "") => async (dispatch) => {
+  if (!pageUrl) {
+    return;
+  }
+
   try {
-    const data = await axios.get(`${customPageListUrl}${pageUrl}`);
+    const data = await axios.get(`${customPageListUrl}${pageUrl}/`);
 
     if (data.status !== 200) {
       console.log("SERVER ERROR?!");

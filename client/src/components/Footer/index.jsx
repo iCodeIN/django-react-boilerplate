@@ -22,7 +22,10 @@ export function Footer() {
               key={menuItem.url}
               className={matches ? classes.menuItem : classes.menuItemSm}
             >
-              <RouterLink to={menuItem.url} className={classes.menuLink}>
+              <RouterLink
+                to={`/pages/${menuItem.url}`}
+                className={classes.menuLink}
+              >
                 {menuItem.title}
               </RouterLink>
             </li>
