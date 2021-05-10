@@ -8,13 +8,48 @@ export const useStyles = makeStyles((theme) => ({
     display: "flex",
     justifyContent: "center",
     position: "fixed",
+    flexDirection: "column",
     bottom: 0,
     left: 0,
   },
-  footer: {
+  footerItem: {
     display: "flex",
     justifyContent: "center",
-    paddingTop: theme.spacing(2),
-    paddingBottom: theme.spacing(2),
+    marginTop: theme.spacing(2),
+    marginBottom: theme.spacing(2),
+  },
+  footerMenu: {
+    display: "flex",
+    flexDirection: "column",
+    justifyContent: "center",
+    marginTop: theme.spacing(2),
+    marginBottom: theme.spacing(2),
+  },
+  menuList: {
+    display: "flex",
+    flexDirection: "row",
+    justifyContent: "center",
+    padding: 0,
+    margin: 0,
+  },
+  menuListSm: {
+    display: "flex",
+    flexDirection: "column",
+    justifyContent: "center",
+    padding: 0,
+    margin: 0,
+  },
+  menuItem: {
+    paddingLeft: theme.spacing(4),
+    paddingRight: theme.spacing(4),
+    listStyle: "none",
+  },
+  menuItemSm: {
+    textAlign: "center",
+    listStyle: "none",
+  },
+  menuLink: {
+    color: theme.palette.text.secondary,
+    textDecoration: "none",
   },
 }));

@@ -29,9 +29,9 @@ export function Navigation() {
   };
 
   const list = () => (
-    <div
+    <nav
       className={classes.list}
-      role="presentation"
+      role="navigation"
       onClick={toggleDrawer(false)}
       onKeyDown={toggleDrawer(false)}
     >
@@ -53,7 +53,7 @@ export function Navigation() {
           </ListItem>
         </RouterLink>
       </List>
-    </div>
+    </nav>
   );
 
   return (

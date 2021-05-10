@@ -11,5 +11,6 @@ class PageListSerializer(serializers.Serializer):
 class PageGetSerializer(serializers.Serializer):
     """Serializer for the the Page's data"""
 
+    url = serializers.CharField()
     title = serializers.CharField()
     content = serializers.CharField()

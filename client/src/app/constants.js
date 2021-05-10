@@ -7,3 +7,6 @@ export const myProfileUrl = `${accountsUrl}me/`;
 export const loginUrl = `${accountsUrl}login/`;
 export const resetPasswordUrl = `${accountsUrl}password-reset/`;
 export const resetPasswordConfirmUrl = `${resetPasswordUrl}confirm/`;
+
+/* Custom Pages URLs */
+export const customPageListUrl = `${serverUrl}v1/pages/`;

@@ -6,6 +6,7 @@ import {
   signInSuccess,
   setUserInitialized,
 } from "./components/Account/accountSlice";
+import { getCustomPagesList } from "./components/CustomPage/customPageSlice";
 import { showSpinner, hideSpinner } from "./components/Spinner/spinnerSlice";
 import { myProfileUrl } from "./app/constants";
 
@@ -15,6 +16,12 @@ export function InitApp() {
   useEffect(() => {
     async function fetchData() {
       dispatch(showSpinner());
+      try {
+        dispatch(getCustomPagesList());
+      } catch (err) {
+        console.log("Failed load: no custom pages' data.");
+      }
+
       try {
         const data = await axios.get(myProfileUrl);
 
