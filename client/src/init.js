@@ -8,6 +8,7 @@ import {
 } from "./components/Account/accountSlice";
 import { getCustomPagesList } from "./components/CustomPage/customPageSlice";
 import { showSpinner, hideSpinner } from "./components/Spinner/spinnerSlice";
+import { initCookiesConsent } from "./components/CookiesModal/cookiesConsentSlice";
 import { myProfileUrl } from "./app/constants";
 
 export function InitApp() {
@@ -16,12 +17,18 @@ export function InitApp() {
   useEffect(() => {
     async function fetchData() {
       dispatch(showSpinner());
+
+      // Init Cookies consent modal
+      dispatch(initCookiesConsent())
+
+      // Load Custom Pages list
       try {
         dispatch(getCustomPagesList());
       } catch (err) {
         console.log("Failed load: no custom pages' data.");
       }
 
+      // Load user's session
       try {
         const data = await axios.get(myProfileUrl);
 

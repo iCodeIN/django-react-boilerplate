@@ -1,5 +1,5 @@
-import React from "react";
-import { useSelector } from "react-redux";
+import React, { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import { Switch, Route } from "react-router-dom";
 import { SnackbarProvider } from "notistack";
 
@@ -10,12 +10,29 @@ import { Error404Page } from "./pages/Error";
 
 import { Header } from "./components/Header";
 import { Footer } from "./components/Footer";
+import { CookiesModal } from "./components/CookiesModal";
 import { Spinner } from "./components/Spinner";
 
+import {
+  hideModal,
+  showModal,
+} from "./components/CookiesModal/cookiesConsentSlice";
+
 function App() {
+  const dispatch = useDispatch();
+
   const isUserInitialized = useSelector(
     (state) => state.account.isUserInitialized
   );
+  const isConfirmed = useSelector((state) => state.cookiesConsent.confirmed);
+
+  useEffect(() => {
+    if (isConfirmed) {
+      dispatch(hideModal());
+    } else {
+      dispatch(showModal());
+    }
+  }, [isConfirmed, dispatch]);
 
   return (
     <SnackbarProvider maxSnack={3}>
@@ -35,6 +52,7 @@ function App() {
         </>
       )}
       <Footer />
+      <CookiesModal />
     </SnackbarProvider>
   );
 }

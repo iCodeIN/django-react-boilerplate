@@ -13,3 +13,11 @@ export function getCookie(name) {
   }
   return cookieValue;
 }
+
+export function setCookie(name, cookieValue, expiration) {
+  const value = cookieValue || "true";
+  const expirationDate = expiration
+    ? new Date.parse(expiration)
+    : "Fri, 31 Dec 9999 23:59:59 GMT";
+  document.cookie = `${name}=${value}; expires=${expirationDate}`;
+}

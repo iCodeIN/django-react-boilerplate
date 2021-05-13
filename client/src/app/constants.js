@@ -10,3 +10,6 @@ export const resetPasswordConfirmUrl = `${resetPasswordUrl}confirm/`;
 
 /* Custom Pages URLs */
 export const customPageListUrl = `${serverUrl}v1/pages/`;
+
+/* T&C page URL */
+export const termsPageUrl = "/pages/terms/";

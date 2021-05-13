@@ -5,7 +5,6 @@ import { Button, Container, TextField, Typography } from "@material-ui/core";
 import { useSnackbar } from "notistack";
 
 import { setError, updateUser } from "../accountSlice";
-import { Footer } from "../../Footer";
 import { useStyles } from "../styles";
 
 export function Dashboard() {
